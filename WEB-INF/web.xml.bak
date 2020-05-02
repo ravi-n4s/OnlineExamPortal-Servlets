@@ -1,0 +1,13 @@
+<web-app>
+<welcome-file-list>
+<welcome-file>welcome.html</welcome-file>
+</welcome-file-list>
+<servlet>
+<servlet-name>req</servlet-name>
+<servlet-class>Preproc</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>req</servlet-name>
+<url-pattern>/preproc</url-pattern>
+</servlet-mapping>
+</web-app>

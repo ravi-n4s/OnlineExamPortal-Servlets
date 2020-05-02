@@ -1,0 +1,31 @@
+import javax.servlet.http.*;
+import javax.servlet.*;
+import java.io.*;
+public class servlet4 extends HttpServlet
+{
+      public void service(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	   {  
+		  PrintWriter out=res.getWriter();
+		  HttpSession session=req.getSession(true);
+		  int c=Integer.parseInt((String)session.getAttribute("count"));
+		  if(req.getParameter("NAME").equals("TRUE"))
+	       c++;
+		  session.setAttribute("count",c);
+		  res.setContentType("text/html");
+		  out.print("<body>");
+		  int score;
+		  if(Integer.parseInt((String)session.getAttribute("count"))==4)
+		   {
+		       out.print("Congratulations "+(String)session.getAttribute("NAME")+"<br>");
+			   out.print("you got them all correct<br>");
+			   out.print("your score : "+Integer.parseInt((String)session.getAttribute("count"))+"/4");
+		   }
+		   else
+		   {
+  		       out.print("Congratulations "+(String)session.getAttribute("NAME")+"<br>");
+			   out.print("you got "+(4-Integer.parseInt((String)session.getAttribute("count")))+"wrong<br>");
+			   out.print("your score : "+Integer.parseInt((String)session.getAttribute("count"))+"/4");			   
+		   }
+		   out.print("</body>");
+		}
+} 
